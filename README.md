@@ -43,7 +43,7 @@ module "aws_cloudfront" {
   allowed_methods                = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
   cached_methods                 = ["GET", "HEAD"]
   target_origin_id               = origin-resource-name
-  cookies_forward                 = "none"
+  cookies_forward                = "none"
   viewer_protocol_policy         = "allow-all"
   min_ttl                        = 0
   default_ttl                    = 3600
