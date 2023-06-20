@@ -50,3 +50,25 @@ resource "aws_cloudfront_distribution" "cloudfront" {
     minimum_protocol_version       = var.viewer_certificate["minimum_protocol_version"]
   }
 }
+
+
+data "aws_route53_zone" "hz" {
+  name         = var.zone_domain_name
+  private_zone = false
+}
+
+
+resource "aws_route53_record" "hz" {
+  count = length(var.aliases)
+
+  zone_id = data.aws_route53_zone.hz.zone_id
+  name    = var.aliases[count.index]
+  type    = "A"
+  # ttl     = 60
+  
+  alias {
+    name                   = aws_cloudfront_distribution.cloudfront.domain_name
+    zone_id                = aws_cloudfront_distribution.cloudfront.hosted_zone_id
+    evaluate_target_health = true
+  }
+}

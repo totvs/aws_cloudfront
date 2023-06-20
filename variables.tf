@@ -33,3 +33,7 @@ variable "viewer_certificate" {
 variable "custom_error_response" {
   description = ""
 }
+
+variable "zone_domain_name" {
+  description = ""
+}
