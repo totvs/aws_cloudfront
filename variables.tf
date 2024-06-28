@@ -37,3 +37,7 @@ variable "custom_error_response" {
 variable "zone_domain_name" {
   description = ""
 }
+
+variable "zone_domain_name_private" {
+  description = ""
+}

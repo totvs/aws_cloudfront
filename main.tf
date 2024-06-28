@@ -58,7 +58,7 @@ data "aws_route53_zone" "hz" {
 }
 
 data "aws_route53_zone" "hz_private" {
-  name         = var.zone_domain_name
+  name         = var.zone_domain_name_private
   private_zone = true
 }
 
