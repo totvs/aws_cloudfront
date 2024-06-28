@@ -57,9 +57,9 @@ data "aws_route53_zone" "hz" {
   private_zone = false
 }
 
-data "aws_route53_zone" "hz_public" {
+data "aws_route53_zone" "hz_private" {
   name         = var.zone_domain_name
-  private_zone = public
+  private_zone = true
 }
 
 
@@ -77,10 +77,10 @@ resource "aws_route53_record" "hz" {
   }
 }
 
-resource "aws_route53_record" "hz_public" {
+resource "aws_route53_record" "hz_private" {
   count = length(var.aliases)
 
-  zone_id = data.aws_route53_zone.hz_public.zone_id
+  zone_id = data.aws_route53_zone.hz_private.zone_id
   name    = var.aliases[count.index]
   type    = "A"
   
