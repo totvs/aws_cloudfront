@@ -42,6 +42,13 @@ module "aws_cloudfront" {
   origin = {
     domain_name = # DNS domain name of either the S3 bucket, or web site of your custom origin
     origin_id   = # Unique identifier for the origin
+  }
+
+  custom_origin_config { # Required when using S3 Bucket Websites
+    http_port              = # HTTP Port for custom origin
+    https_port             = # HTTPS Port for custom origin
+    origin_protocol_policy = # Protocol policy to use such as "http-only"
+    origin_ssl_protocols   = # SSL protocols to use such as ["TLSv1", "TLSv1.1", "TLSv1.2"]
   } 
 
   restrictions = {

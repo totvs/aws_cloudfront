@@ -34,6 +34,10 @@ variable "custom_error_response" {
   description = ""
 }
 
+variable "custom_origin_config" {
+  description = ""
+}
+
 variable "zone_domain_name" {
   description = ""
 }

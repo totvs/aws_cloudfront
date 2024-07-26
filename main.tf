@@ -35,6 +35,13 @@ resource "aws_cloudfront_distribution" "cloudfront" {
     domain_name = var.origin["domain_name"]
     origin_id   = var.origin["origin_id"]
   }
+
+  custom_origin_config {
+    http_port              = var.custom_origin_config["http_port"]
+    https_port             = var.custom_origin_config["https_port"]
+    origin_protocol_policy = var.custom_origin_config["origin_protocol_policy"]
+    origin_ssl_protocols   = var.custom_origin_config["origin_ssl_protocols"]
+  }
   
   restrictions {
     geo_restriction {
